@@ -3,6 +3,13 @@
 # Define Go version
 GO_VERSION="1.18"
 
+# Check if Go is already installed
+if command -v go &> /dev/null; then
+    echo "Go is already installed. Current version:"
+    go version
+    exit 0
+fi
+
 # Download URL
 DOWNLOAD_URL="https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz"
 INSTALL_FILE="go${GO_VERSION}.linux-amd64.tar.gz"

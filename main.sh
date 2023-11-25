@@ -50,6 +50,10 @@ setup_oh-my-zsh() {
 	execute_and_check "./setup_oh-my-zsh.sh" "setup oh-my-zsh"
 }
 
+tools_tree_installtion() {
+	execute_and_check "./tools_tree_installation.sh" "tools tree installation"
+}
+
 neovim_installation() {
 	execute_and_check "./neovim_installation.sh" "neovim installation"
 }
@@ -87,6 +91,9 @@ skip_ssh_key() {
 
 	# install oh-my-zsh
 	setup_oh-my-zsh
+
+    # tools tree
+    tools_tree_installtion
 
 	# neovim
 	neovim_installation	
