@@ -43,7 +43,11 @@ bash_config() {
 }
 
 config_zsh() {
-	xecute_and_check "./config_zsh.sh" "config zsh"
+	execute_and_check "./config_zsh.sh" "config zsh"
+}
+
+setup_iterm2() {
+	execute_and_check "./setup_iterm2.sh" "setup iterm2"
 }
 
 setup_oh-my-zsh() {
@@ -70,7 +74,7 @@ golang_installation() {
 	execute_and_check "./golang_installation.sh" "golang installation "
 }
 
-all_follow() {
+pre_ssh_key() {
 	# Main setup script
 
 
@@ -81,13 +85,16 @@ all_follow() {
 	setup_ssh_key
 }
 
-skip_ssh_key() {
+post_ssh_key() {
 
 	# step3. clone config to local
 	setup_config
 
 	# config bash
 	bash_config
+
+    # install iTerm2
+    setup_iterm2
 
 	# install oh-my-zsh
 	setup_oh-my-zsh
@@ -108,16 +115,16 @@ skip_ssh_key() {
 # Function to display help information
 show_help() {
     echo "Usage: main.sh [options]"
-    echo "Usually, first run main.sh all, and then main.sh skip-sshkey"
+    echo "Usually, first run main.sh pre-sshkey, and then main.sh post-sshkey"
     echo
     echo "Options:"
     echo "  -h, --help       Show this help message"
-    echo "  all              The whole workflow from the beginning"
-    echo "  skip-sshkey      The whole workflow but Skip SSH key setup"
+    echo "  pre-sshkey       The workflows before generating the SSH key (used for git)"
+    echo "  post-sshkey      The whole workflow after SSH key is generated"
     echo
     echo "Example:"
-    echo "  ./main.sh all       Run the script with SSH key setup"
-    echo "  ./main.sh skip-sshkey   Run the script but skip SSH key setup"
+    echo "  ./main.sh pre-sshkey    Execute the workflows from beginning to generating the SSH key"
+    echo "  ./main.sh post-sshkey   Execute the workflows after generating the SSH key"
 }
 
 # Argument handling with case statement
@@ -127,14 +134,14 @@ case "$1" in
         show_help
         exit 0
         ;;
-    all)
+    pre-sshkey)
 	echo "executed with whole workflow"
-	all_follow
+	pre_ssh_key
 	exit 0
 	;;
-    skip-sshkey)
+    post-sshkey)
 	echo "executed with whole workflow but skipping ssh key gen"
-	skip_ssh_key
+	post_ssh_key
 	exit 0
         ;;
     *)
