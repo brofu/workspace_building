@@ -1,7 +1,9 @@
 #!/bin/bash
 
+source common.sh
+
 # link vimrc
-ln -sf $HOME/workspace/wpconfig/vim/.vimrc $HOME/.vimrc
+ln -sf $WORKSPACE_CONFIG_PATH/vim/.vimrc $HOME/.vimrc
 
 # Define the path for init.vim
 INIT_VIM_PATH="$HOME/.config/nvim/init.vim"

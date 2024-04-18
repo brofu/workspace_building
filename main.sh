@@ -2,6 +2,9 @@
 
 set -e
 
+### global variables
+source common.sh
+
 # Function to execute a script and check its exit status
 execute_and_check() {
     local script=$1
@@ -54,8 +57,12 @@ setup_oh-my-zsh() {
 	execute_and_check "./setup_oh-my-zsh.sh" "setup oh-my-zsh"
 }
 
-tools_tree_installtion() {
+tools_tree_installation() {
 	execute_and_check "./tools_tree_installation.sh" "tools tree installation"
+}
+
+tools_tmux_installation() {
+	execute_and_check "./tools_tmux_installation.sh" "tools tmux installation"
 }
 
 neovim_installation() {
@@ -100,7 +107,7 @@ post_ssh_key() {
 	setup_oh-my-zsh
 
     # tools tree
-    tools_tree_installtion
+    tools_tree_installation
 
 	# neovim
 	neovim_installation	
@@ -109,6 +116,9 @@ post_ssh_key() {
 
     # golang
     golang_installation
+
+    # tmux
+    tools_tmux_installation
 }
 
 
@@ -121,6 +131,7 @@ show_help() {
     echo "  -h, --help       Show this help message"
     echo "  pre-sshkey       The workflows before generating the SSH key (used for git)"
     echo "  post-sshkey      The whole workflow after SSH key is generated"
+    echo "  script_name     Test the script with specific cmd, for example, main tools_tmux_installation"
     echo
     echo "Example:"
     echo "  ./main.sh pre-sshkey    Execute the workflows from beginning to generating the SSH key"
@@ -143,6 +154,9 @@ case "$1" in
 	echo "executed with whole workflow but skipping ssh key gen"
 	post_ssh_key
 	exit 0
+        ;;
+    tools_tmux_installation)
+        tools_tmux_installation   
         ;;
     *)
         show_help

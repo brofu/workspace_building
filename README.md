@@ -27,3 +27,8 @@ For the manual part, the follow work may need to do.
   2. https://github.com/altercation/solarized/blob/master/iterm2-colors-solarized/README.md
   Usually, the `Solarized` preset should be there with the latest `iIterm2` version
   ```
+
+* golang
+
+  * May need install the `gopls` package for `vim-go` or other IDE
+  * for go 1.18 the latest version is gopls@v0.14.2 refer to: https://pkg.go.dev/golang.org/x/tools/gopls#readme-supported-go-versions

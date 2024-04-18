@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source config.sh
+
 # Define Go version
 GO_VERSION="1.18"
 
