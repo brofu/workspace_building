@@ -37,8 +37,17 @@ setup_ssh_key() {
 	exit 0
 }
 
-setup_config() {
-	execute_and_check "./setup_config.sh" "setup config"
+# set config folder and clone it from git
+prepare_configurations() {
+	execute_and_check "./prepare_configurations.sh" "setup config"
+}
+
+pyenv_installation() {
+	execute_and_check "./pyenv_installation.sh" "install pyenv"
+}
+
+python_installation() {
+	execute_and_check "./python_installation.sh" "install python"
 }
 
 bash_config() {
@@ -94,11 +103,20 @@ pre_ssh_key() {
 
 post_ssh_key() {
 
-	# step3. clone config to local
-	setup_config
+    # install or update homebrew
+    bash homebrew_update.sh
 
+	#clone config to local
+	prepare_configurations
+    
 	# config bash
 	bash_config
+
+    # install pyenv
+    pyenv_installation
+
+    # install python
+    python_installation
 
     # install iTerm2
     setup_iterm2
