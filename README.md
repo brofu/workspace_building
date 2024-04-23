@@ -32,3 +32,30 @@ For the manual part, the follow work may need to do.
 
   * May need install the `gopls` package for `vim-go` or other IDE
   * for go 1.18 the latest version is gopls@v0.14.2 refer to: https://pkg.go.dev/golang.org/x/tools/gopls#readme-supported-go-versions
+
+* Vim Plugin
+
+    1. `YouCompleteMe`
+    ```
+       // There is a CLIENT locates in vim and a SERVER running backend of YCM
+
+       // client side
+       // this part is actually finished by the scripts
+       // install another vim with good python support. The system attached one doens't work well on this point
+       brew install vim 
+       // install client side within vim        
+       :PluginInstall ycm-core/YouCompleteMe
+
+       // server side
+       cd ~/.vim/bundle
+       // get the code
+       git clone git@github.com:ycm-core/YouCompleteMe.git
+       // get all the sub modules
+       git submodule update --init --recursive
+       // get necessary libs
+       brew install cmake nodejs
+       // build YCM. `--all` means all the supported completers 
+       // It's also possible to install only dedicated completers
+       // python install.py --help to get all possible args
+       python install.py --all
+    ```

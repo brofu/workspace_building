@@ -74,6 +74,10 @@ tools_tmux_installation() {
 	execute_and_check "./tools_tmux_installation.sh" "tools tmux installation"
 }
 
+vim_installation() {
+	execute_and_check "./vim_installation.sh" "vim installation"
+} 
+
 neovim_installation() {
 	execute_and_check "./neovim_installation.sh" "neovim installation"
 }
@@ -127,8 +131,12 @@ post_ssh_key() {
     # tools tree
     tools_tree_installation
 
-	# neovim
-	neovim_installation	
+	# ********
+    # vim & neovim
+    # 
+    
+    # system attached vim cannot support python 3.10+ good enough
+    vim_installation 
 	neovim_config
 	neovim_install_plugins
 
