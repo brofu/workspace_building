@@ -36,7 +36,7 @@ For the manual part, the follow work may need to do.
 * Vim Plugin
 
     1. `YouCompleteMe`
-    ```
+        ```
        // There is a CLIENT locates in vim and a SERVER running backend of YCM
 
        // client side
@@ -58,4 +58,5 @@ For the manual part, the follow work may need to do.
        // It's also possible to install only dedicated completers
        // python install.py --help to get all possible args
        python install.py --all
-    ```
+       ```
+       refer to: https://github.com/ycm-core/YouCompleteMe?tab=readme-ov-file#macos

@@ -1,9 +1,6 @@
 #!/bin/bash
 
-source config.sh
-
-# Define Go version
-GO_VERSION="1.18"
+source common.sh
 
 # Check if Go is already installed
 if command -v go &> /dev/null; then

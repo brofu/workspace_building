@@ -7,3 +7,6 @@ BASH_CUS_RC="$HOME/.bashcrc"
 
 # python version
 PYTHON_VERSION="3.10.0"
+
+# golang version
+GO_VERSION="1.18"

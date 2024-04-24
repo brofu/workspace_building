@@ -94,6 +94,10 @@ golang_installation() {
 	execute_and_check "./golang_installation.sh" "golang installation "
 }
 
+golang_tools_installation() {
+	execute_and_check "./golang_tools_installation.sh" "golang tools installation "
+}
+
 pre_ssh_key() {
 	# Main setup script
 
@@ -142,6 +146,7 @@ post_ssh_key() {
 
     # golang
     golang_installation
+    golang_tools_installation
 
     # tmux
     tools_tmux_installation
@@ -181,8 +186,8 @@ case "$1" in
 	post_ssh_key
 	exit 0
         ;;
-    tools_tmux_installation)
-        tools_tmux_installation   
+    test)
+        golang_tools_installation
         ;;
     *)
         show_help
