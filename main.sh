@@ -98,6 +98,10 @@ golang_tools_installation() {
 	execute_and_check "./golang_tools_installation.sh" "golang tools installation "
 }
 
+tools_gitbook_installation() {
+	execute_and_check "./gitbook_installation.sh" "gitbook installation "
+} 
+
 pre_ssh_key() {
 	# Main setup script
 
@@ -150,6 +154,9 @@ post_ssh_key() {
 
     # tmux
     tools_tmux_installation
+
+    # gitbook
+    tools_gitbook_installation 
 }
 
 
@@ -187,7 +194,7 @@ case "$1" in
 	exit 0
         ;;
     test)
-        golang_tools_installation
+        tools_gitbook_installation
         ;;
     *)
         show_help
